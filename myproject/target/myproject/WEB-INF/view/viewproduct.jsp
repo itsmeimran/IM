@@ -31,12 +31,12 @@
 
 		
 	</div>
-	<div class="container">
+	<div class="container" ng-app="cartApp">
 		<div class="row">
 			<div class="col-md-5">
 				<img alt="${product.productName}" src="${productImages}/${product.productid}.jpg" style="width: 100%; height: 300px" />
 			</div class="col-md-5">
-			<h3>${product.productName}</h3>
+			<h3>${product.productName}</h3>		
 			<p>${product.productDescription}</p>
 			<p>
 			<strong>Product Category</strong>:${product.productCategory}
@@ -44,7 +44,21 @@
 			<p>
 			<strong>Price</strong>:Rs ${product.productPrice}0
 			</p>
+			<br>
+			<c:set var="role" scope="page" value="${param.role}"/>
+			<c:set var="url" scope="page" value="/productlist"/>
+			<c:if test="${role='admin'}">
+			<c:set var="url" scope="page" value="/admin/productinventory"/>
+			</c:if>
+			<p ng-controller="cartCtrl">
+			<a href="<c:url value='${url}'/>" class="btn btn-default">Back</a>
+			<a href="#" class="btn btn-warning btn-large" ng-click="addToCart('${product.productid}')"><span 
+			class="glyphicon glyphicon-shopping-cart"></span>Order Now</a>
+			<!-- <a href="<spring:url value="/cart"/>" class="btn btn-default"><span class="glyphicon glyphicon-hand-right"></span>View Cart</a> -->
+			<a href="${req}/cart" class="btn btn-default"><span class="glyphicon glyphicon-hand-right"></span>View Cart</a>
+			</p>
 		</div>
+		<script src="<c:url value="/resources/js/controller.js" />" > </script>
 		<%@include file="footer.jsp"%>
 	</div>
 	

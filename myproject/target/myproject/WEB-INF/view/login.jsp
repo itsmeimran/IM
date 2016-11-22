@@ -9,7 +9,7 @@
 			<c:if test="${not empty msg }">
 			<div class="msg">${msg}</div>
 			</c:if>
-			<form name="loginForm" action="#" method="post">
+			<form name="loginForm" action="" method="post">
 			<c:if test="${not empty error }">
 			<div class="error" style="color:#ff0000;">${error}</div>
 			</c:if>
@@ -22,7 +22,7 @@
 					 <input type="password"	id="password" name="password" class="form-control" />
 				</div>
 				<input type="submit" value="Submit" class="btn btn-default" />
-				<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token}" />
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 				
 			</form>
 		</div>

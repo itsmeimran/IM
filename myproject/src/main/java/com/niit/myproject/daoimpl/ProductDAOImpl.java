@@ -2,11 +2,13 @@ package com.niit.myproject.daoimpl;
 import java.util.List;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 //import org.hibernate.query.Query;
 /* Make sure to use spring framework transactional annotation*/
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import com.niit.myproject.dao.ProductDAO;
 import com.niit.myproject.model.Product;
 
@@ -23,12 +25,12 @@ public class ProductDAOImpl implements ProductDAO{
 		return sessionFactory.getCurrentSession().createQuery("FROM Product").list();
 	}
 
-	public Product getProductById(int var) {
+	public Product getProductById(String var) {
 
 		return sessionFactory.getCurrentSession().get(Product.class, var);
 	}
 
-	public void removeProduct(int id) {
+	public void removeProduct(String id) {
 		sessionFactory.getCurrentSession().delete(getProductById(id));
 
 	}
@@ -43,6 +45,14 @@ public class ProductDAOImpl implements ProductDAO{
 
 		sessionFactory.getCurrentSession().update(product);
 	}
+
+	public List<Product> getProductByCategory(String category) {
+		// TODO Auto-generated method stub
+		Query query = sessionFactory.getCurrentSession().createQuery("from Product WHERE productCategory=?");
+		query.setParameter(0, category);
+		return query.list();
+	}
+
 
 
 	

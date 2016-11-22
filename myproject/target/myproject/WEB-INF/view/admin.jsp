@@ -22,7 +22,7 @@
   <p>This is for Admin</p>
   <c:if test="${pageContext.request.userPrincipal.name!=null}">
   <h2>
-  Welcome:${pageContext.request.userPrincipal.name}|<a href="#">Logout</a>
+  Welcome:${pageContext.request.userPrincipal.name}|<a href="${req}/login">Logout</a>
 </h2>
   
   </c:if>

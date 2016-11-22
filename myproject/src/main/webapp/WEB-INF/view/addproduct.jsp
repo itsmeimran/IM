@@ -42,9 +42,9 @@
 	<label class="checkbox-inline"><form:radiobutton path="productCategory" id="category"
 	value="Mobile"/>Mobile</label>
 	<label class="checkbox-inline"><form:radiobutton path="productCategory" id="category"
-	value="airconditioner"/>Air Conditioner</label>
+	value="AirConditioner"/>Air Conditioner</label>
 	<label class="checkbox-inline"><form:radiobutton path="productCategory" id="category"
-	value="television"/>Television</label>
+	value="Television"/>Television</label>
 	</div>
 	<div class ="form-group">
 	<label for="description">Product Description</label>

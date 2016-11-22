@@ -105,7 +105,7 @@ public class AdminController {
 	}
 //11/11/2016 starts	
 @RequestMapping("/admin/productinventory/editproduct/{id}")
-public String editProduct(@PathVariable("id")int id, Model model)
+public String editProduct(@PathVariable("id")String id, Model model)
 {
 	Product product=productdao.getProductById(id);
 	model.addAttribute(product);
@@ -120,7 +120,7 @@ public String editProductPost(@Valid @ModelAttribute("product") Product product 
 		return "addproduct";
 	}
 	
-	if (product.getProductid() == 0) {
+	if (product.getProductid() == null) {
 		
 		productdao.addProduct(product);
 	// ................................... multi part starts
@@ -211,7 +211,7 @@ public String editProductPost(@Valid @ModelAttribute("product") Product product 
 
 	//11/11/2026 ends
 	@RequestMapping(value={"/admin/productinventory/deleteproduct/{id}"})
-	public String deleteProduct(@PathVariable int id,Model model) 
+	public String deleteProduct(@PathVariable String id,Model model) 
 	{
 		productdao.removeProduct(id);
 		

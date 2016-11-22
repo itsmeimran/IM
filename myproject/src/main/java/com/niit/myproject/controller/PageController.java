@@ -47,7 +47,7 @@ public class PageController {
 		return ("productlist");
 	}
 	@RequestMapping(value={"/productlist/viewproduct/{id}"})
-	public String viewSingleProduct(@PathVariable int id,Model model) throws IOException
+	public String viewSingleProduct(@PathVariable String id,Model model) throws IOException
 	{
 		Product product=productdao.getProductById(id);
 		model.addAttribute(product);
@@ -243,5 +243,15 @@ public class PageController {
 //		
 //		return "redirect:/admin/productinventory";
 //	}
+	//for Category wise starts here
+	
+		@RequestMapping("/viewall/{catgory}")
+		public ModelAndView Productcategory(@PathVariable("catgory") String cate) {
+			ModelAndView modelAndView = new ModelAndView("viewbycat");
+			List<Product> products = productdao.getProductByCategory(cate);
+		
+			modelAndView.addObject("productData", products);
+			return modelAndView;
+		}
 }
 
